@@ -144,14 +144,14 @@ def buildDirList(xmlin):
         if path in dirList:
             dirList.remove(path)
 
-    return dirList
+    return (dirList, metsFileList)
 
 # check whether file paths in METS (in filePathArray) exist in package or not, build array of paths and statuses (boolean)
 def buildPathStatusArray(xmlin):
     
     filePathArray = buildFilePathList(xmlin)
     
-    dirList = buildDirList(xmlin)
+    dirList = buildDirList(xmlin)[0]
     
     # compare each file in pathlist against the contents of the system
     pathStatusArray = {}
@@ -163,10 +163,14 @@ def buildPathStatusArray(xmlin):
 
 # check whether file paths in package exist in METS or not, build array of paths and statuses (boolean)
 def buildDirStatusArray(xmlin):
+
+    dirList, metsList = buildDirList(xmlin)
     
-    filePathArray = buildFilePathList(xmlin)
-    
-    dirList = buildDirList(xmlin)
+    # when multiple METS files exist in a folder, create filePathArray to include file paths from all METS files. This avoids errors when all files in a directory are accounted for in METS, but are split across METS files      
+
+    filePathArray = {}
+    for metsFile in metsList
+        filePathArray.union(buildFilePathList(metsFile))    
     
     # compare each file in system list against the METS pathlist
     dirStatusArray = {}
