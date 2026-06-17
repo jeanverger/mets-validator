@@ -138,9 +138,7 @@ def buildDirList(xmlin):
     
     metsFileList = findMetsFiles(rootDir)
     
-    metsFileList = [path.replace(rootDir,'.') for path in metsFileList]
-    
-    for path in metsFileList:
+    for path in [path.replace(rootDir,'.') for path in metsFileList]:
         if path in dirList:
             dirList.remove(path)
 
