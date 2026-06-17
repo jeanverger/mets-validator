@@ -176,7 +176,7 @@ def buildDirStatusArray(xmlin):
     dirStatusArray = {}
     
     for filePath in dirList:
-        if filePath in filePathArray.values():
+        if filePath in filePathArray:
             dirStatusArray[filePath] = True
         else:
             dirStatusArray[filePath] = False
