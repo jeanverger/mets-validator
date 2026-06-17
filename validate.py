@@ -142,6 +142,8 @@ def buildDirList(xmlin):
         if path in dirList:
             dirList.remove(path)
 
+    metsFileList = [path.replace('/','\\') for path in metsFileList]
+
     return (dirList, metsFileList)
 
 # check whether file paths in METS (in filePathArray) exist in package or not, build array of paths and statuses (boolean)
@@ -168,7 +170,7 @@ def buildDirStatusArray(xmlin):
 
     filePathArray = set()
     for metsFile in metsList:
-        filePathArray.union(buildFilePathList(metsFile))    
+        filePathArray = filePathArray.union(set(buildFilePathList(metsFile).values()))    
     
     # compare each file in system list against the METS pathlist
     dirStatusArray = {}
