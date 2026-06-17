@@ -169,7 +169,7 @@ def buildDirStatusArray(xmlin):
     # when multiple METS files exist in a folder, create filePathArray to include file paths from all METS files. This avoids errors when all files in a directory are accounted for in METS, but are split across METS files      
 
     filePathArray = {}
-    for metsFile in metsList
+    for metsFile in metsList:
         filePathArray.union(buildFilePathList(metsFile))    
     
     # compare each file in system list against the METS pathlist
