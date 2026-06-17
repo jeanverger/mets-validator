@@ -1,5 +1,7 @@
 # mets-validator
 
+Forked from original for better compatibility with Wisconsin Newspaper Association file structures, which occasionally use multiple METS files in a single directory. This situation caused both METS files to be flagged for having files in the directory not represented in the METS file. Now, as long as a file is identified properly in at least one METS file in its directory, it no longer causes other METS files to be flagged as invalid.
+
 ## Requirements
 
 * [Python 3](https://www.python.org/download/releases/3.0/)
